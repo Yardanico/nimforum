@@ -7,10 +7,10 @@
 #
 import system except Thread
 import
-  os, strutils, times, md5, strtabs, math, db_sqlite,
+  os, strutils, times, md5, strtabs, db_sqlite,
   jester, asyncdispatch, asyncnet, sequtils,
-  parseutils, random, rst, recaptcha, json, re, sugar,
-  strformat, logging
+  random, rst, recaptcha, json, re, sugar,
+  logging
 import cgi except setCookie
 import options
 
@@ -19,10 +19,9 @@ import utils except `%`
 
 import frontend/threadlist except User
 import frontend/[
-  category, postlist, error, header, post, profile, user, karaxutils, search
+  category, postlist, error, header, post, user, karaxutils, search
 ]
 
-from htmlgen import tr, th, td, span, input
 
 type
   TCrud = enum crCreate, crRead, crUpdate, crDelete

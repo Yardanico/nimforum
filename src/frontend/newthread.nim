@@ -36,7 +36,7 @@ when defined(js):
 
     let uri = makeUri("newthread")
     # TODO: This is a hack, karax should support this.
-    let formData = newFormData()
+    let formData = kajax.newFormData()
     formData.append("subject", state.subject)
     formData.append("msg", state.replyBox.getText())
     ajaxPost(uri, @[], cast[cstring](formData),

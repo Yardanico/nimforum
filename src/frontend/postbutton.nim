@@ -13,12 +13,12 @@ when defined(js):
   type
     PostButton* = ref object
       uri, title, icon: string
-      formData: FormData
+      formData: kajax.FormData
       error: Option[PostError]
       loading: bool
       posted: bool
 
-  proc newPostButton*(uri: string, formData: FormData,
+  proc newPostButton*(uri: string, formData: kajax.FormData,
                       title: string, icon: string): PostButton =
     PostButton(
       uri: uri,
@@ -28,7 +28,7 @@ when defined(js):
     )
 
   proc newResetPasswordButton*(username: string): PostButton =
-    var formData = newFormData()
+    var formData = kajax.newFormData()
     formData.append("email", username)
     result = newPostButton(
         makeUri("/sendResetPassword"),
@@ -109,7 +109,7 @@ when defined(js):
     state.error = none[PostError]()
 
     # TODO: This is a hack, karax should support this.
-    var formData = newFormData()
+    var formData = kajax.newFormData()
     formData.append("id", $post.id)
     let uri =
       if post.isLikedBy(currentUser):
@@ -165,7 +165,7 @@ when defined(js):
     state.error = none[PostError]()
 
     # TODO: This is a hack, karax should support this.
-    var formData = newFormData()
+    var formData = kajax.newFormData()
     formData.append("id", $thread.id)
     let uri =
       if thread.isLocked:

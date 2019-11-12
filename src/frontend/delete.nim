@@ -51,7 +51,7 @@ when defined(js):
       of DeletePost:
         makeUri("/deletePost")
     # TODO: This is a hack, karax should support this.
-    let formData = newFormData()
+    let formData = kajax.newFormData()
     case state.kind
     of DeleteUser:
       formData.append("username", state.user.name)

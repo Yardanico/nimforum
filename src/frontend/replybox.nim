@@ -26,7 +26,7 @@ when defined(js):
 
   proc performScroll() =
     let replyBox = dom.document.getElementById("reply-box")
-    replyBox.scrollIntoView(false)
+    replyBox.scrollIntoView()
 
   proc show*(state: ReplyBox) =
     # Scroll to the reply box.
@@ -53,7 +53,7 @@ when defined(js):
     state.error = none[PostError]()
     state.rendering = none[kstring]()
 
-    let formData = newFormData()
+    let formData = kajax.newFormData()
     formData.append("msg", state.text)
     let uri = makeUri("/preview")
     ajaxPost(uri, @[], cast[cstring](formData),
@@ -74,7 +74,7 @@ when defined(js):
     state.loading = true
     state.error = none[PostError]()
 
-    let formData = newFormData()
+    let formData = kajax.newFormData()
     formData.append("msg", state.text)
     formData.append("threadId", $thread.id)
     if replyingTo.isSome:

@@ -63,7 +63,7 @@ when defined(js):
     state.loading = true
     state.error = none[PostError]()
 
-    let formData = newFormData()
+    let formData = kajax.newFormData()
     formData.append("email", state.email)
     formData.append("rank", $state.rank)
     formData.append("username", $state.profile.user.name)

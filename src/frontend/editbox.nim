@@ -49,7 +49,7 @@ when defined(js):
     state.loading = true
     state.error = none[PostError]()
 
-    let formData = newFormData()
+    let formData = kajax.newFormData()
     formData.append("msg", state.box.getText())
     formData.append("postId", $state.post.id)
     # TODO: Subject
