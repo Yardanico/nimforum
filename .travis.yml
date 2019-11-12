@@ -32,7 +32,7 @@ before_install:
   - export PATH=$PATH:$PWD/geckodriver
 
 install:
-  - export CHOOSENIM_CHOOSE_VERSION="#f92d61b1f4e193bd"
+  - export CHOOSENIM_CHOOSE_VERSION="#193b3c66bbeffafa"
   - |
       curl https://nim-lang.org/choosenim/init.sh -sSf > init.sh
       sh init.sh -y
