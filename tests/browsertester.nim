@@ -46,27 +46,28 @@ template withBackend(body: untyped): untyped =
 import browsertests/[scenario1, threads, issue181]
 
 when isMainModule:
-  spawn runProcess("geckodriver -p 4444 --log config")
-  defer:
-    discard execCmd("killall geckodriver")
-
-  # Create a fresh DB for the tester.
-  doAssert(execCmd("nimble testdb") == QuitSuccess)
-
-  doAssert(execCmd("nimble -y frontend") == QuitSuccess)
-  echo("Waiting for geckodriver to startup...")
-  sleep(5000)
-
   try:
-    let driver = newWebDriver()
-    let session = driver.createSession()
+    spawn runProcess("geckodriver -p 4444 --log config")
 
-    withBackend:
-      scenario1.test(session, baseUrl)
-      threads.test(session, baseUrl)
-      issue181.test(session, baseUrl)
+    # Create a fresh DB for the tester.
+    doAssert(execCmd("nimble testdb") == QuitSuccess)
 
-    session.close()
+    doAssert(execCmd("nimble -y frontend") == QuitSuccess)
+    echo("Waiting for geckodriver to startup...")
+    sleep(5000)
+
+    try:
+      let driver = newWebDriver()
+      let session = driver.createSession()
+
+      withBackend:
+        scenario1.test(session, baseUrl)
+        threads.test(session, baseUrl)
+        issue181.test(session, baseUrl)
+
+      session.close()
+    except:
+      sleep(10000) # See if we can grab any more output.
+      raise
   except:
-    sleep(10000) # See if we can grab any more output.
-    raise
+    discard execCmd("killall geckodriver")
