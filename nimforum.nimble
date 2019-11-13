@@ -16,7 +16,7 @@ requires "nim >= 1.0.2"
 requires "jester 0.4.3"
 requires "bcrypt#head"
 requires "hmac#9c61ebe2fd134cf97"
-requires "recaptcha 1.0.2"
+requires "recaptcha 1.0.3"
 requires "sass#649e0701fa5c"
 
 requires "karax#f6bda9ae892"
