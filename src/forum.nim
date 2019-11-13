@@ -8,7 +8,7 @@
 import system except Thread
 import
   os, strutils, times, md5, strtabs, db_sqlite,
-  jester, asyncdispatch, asyncnet, sequtils,
+  asynchttpserver, jester, asyncdispatch, asyncnet, sequtils,
   random, rst, recaptcha, json, re, sugar,
   logging
 import cgi except setCookie
