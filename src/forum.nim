@@ -8,11 +8,12 @@
 import system except Thread
 import
   os, strutils, times, md5, strtabs, db_sqlite,
-  asynchttpserver, jester, asyncdispatch, asyncnet, sequtils,
+  jester, asyncdispatch, asyncnet, sequtils,
   random, rst, recaptcha, json, re, sugar,
   logging
 import cgi except setCookie
 import options
+import asynchttpserver except Request
 
 import auth, email, buildcss
 import utils except `%`
