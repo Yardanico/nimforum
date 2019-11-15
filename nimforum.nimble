@@ -36,7 +36,7 @@ task frontend, "Builds the necessary JS frontend (with CSS)":
   exec "nimble c -r src/buildcss"
   exec "nimble js -d:release src/frontend/forum.nim"
   mkDir "public/js"
-  cpFile "src/frontend/nimcache/forum.js", "public/js/forum.js"
+  cpFile "src/frontend/forum.js", "public/js/forum.js"
 
 task minify, "Minifies the JS using Google's closure compiler":
   exec "closure-compiler public/js/forum.js --js_output_file public/js/forum.js.opt"
